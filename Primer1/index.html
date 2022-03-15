@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formiranje studentskog e-maila</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Unesite ime i prezime:</td>
+            <td><input></td>
+        </tr>
+        <tr>
+            <td>Indeks:</td>
+            <td><input placeholder="gggg">/<input placeholder="bbbb"></td>
+        </tr>
+        <tr>
+            <td>E-mail:</td>
+            <td> <input placeholder="Predite misem da dobijete mejl adresu" style="width:97.5%"></td>
+        </tr>
+    </table>
+
+    <script>
+        document.getElementsByTagName("input")[3].disabled = true
+        document.getElementsByTagName("input")[3].addEventListener("mouseenter",()=>{
+            input = document.getElementsByTagName("input");
+            if(/^[A-Z][a-z]+( [A-Z][a-z]+)$/.test(input[0].value) && /^[0-9]{4}$/.test(input[1].value) && /^[0-9]*$/.test(input[2].value)){
+                inicijaliGodina = input[0].value[input[0].value.indexOf(" ")+1].toLowerCase()+input[0].value[0].toLowerCase()+
+                input[1].value[input[1].value.length-2]+input[1].value[input[1].value.length-1]
+                
+                popuniMestaNulama = ""
+                duzina =input[2].value.length
+                if(duzina<4)while(duzina !=4){popuniMestaNulama+="0";duzina++}
+                indeks = input[2].value.length-1<4?popuniMestaNulama+input[2].value:input[2].value;
+                input[3].value = inicijaliGodina+indeks+"d@student.etf.rs"
+            }
+            else alert("Sva polja moraju biti popunjena u odgovarajucem formatu!")
+        })
+    </script>
+</body>
+</html>

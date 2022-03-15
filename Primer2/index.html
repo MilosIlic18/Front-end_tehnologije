@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formular za promenu pozadinske boje</title>
+</head>
+<body>
+    Crveno: <input><br>
+    Zeleno: <input><br>
+    Plavo: <input><br>
+    Decimal: <input type="radio" name="name">&nbsp;Hexadecimal: <input type="radio" name="name"><br>
+    <input type="button" value="PROMENITE BOJU"><br>
+    <script>
+        input = document.getElementsByTagName("input");
+        input[5].addEventListener("click",()=>{
+            if(/^[0-9]+$/.test(input[0].value) && /^[0-9]+$/.test(input[1].value) && /^[0-9]+$/.test(input[2].value) &&
+                input[3].checked || input[4].checked){
+
+                color = input[3].checked?"rgb("+parseInt(input[0].value,10)+","+parseInt(input[1].value,10)+","+parseInt(input[2].value,10)+")":
+                        input[4].checked?"hsl("+parseInt(input[0].value,16)+","+parseInt(input[1].value,16)+"%,"+parseInt(input[2].value,16)+"%)":""
+                document.getElementsByTagName("body")[0].style.backgroundColor = color
+            }else
+            alert('Sva polja moraju biti popunjena ciframa')
+        })
+    </script>
+</body>
+</html>
